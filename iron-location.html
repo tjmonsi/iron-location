@@ -319,7 +319,9 @@ milliseconds.
         if (event.metaKey || event.ctrlKey) {
           return null;
         }
-        var eventPath = event.path;
+
+        // http://stackoverflow.com/questions/39245488/event-path-undefined-with-firefox-and-vue-js
+        var eventPath = event.path || (event.composedPath && event.composedPath());
         var anchor = null;
         for (var i = 0; i < eventPath.length; i++) {
           var element = eventPath[i];
